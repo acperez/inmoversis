@@ -27,7 +27,7 @@
     "passport": "0.3.2",
     "passport-local": "1.0.0",
     "mongodb": "2.1.19",
-    "mongoose": "4.4.19",
+    "mongoose": ">=5.7.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.15.1",
     "connect-redis": "3.0.2",
