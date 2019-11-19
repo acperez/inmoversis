@@ -27,7 +27,7 @@
     "log4js": "0.6.36",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
-    "mongoose": "4.4.19",
+    "mongoose": "5.7.11",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.15.1",
     "connect-redis": "3.0.2",
