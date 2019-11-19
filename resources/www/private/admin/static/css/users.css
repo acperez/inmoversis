@@ -1,0 +1,68 @@
+dt {
+  float: left;
+  clear: both;
+  width: 20%;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+dt:after {
+  content: ":";
+}
+
+dd {
+  float: left;
+  width: 60%;
+}
+
+#users {
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+
+.user {
+  margin-bottom: 20px;
+  border: 2px black solid;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding: 10px 10px 10px;
+}
+
+.user_head {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+#users ul {
+  list-style-type: none;
+  margin: 0;
+  padding-right: 0;
+}
+
+#users ul li {
+  display: block;
+  float: right;
+}
+
+#users ul li a {
+  display: block;
+  padding: 0 10px 0 10px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 0;
+}
+
+#creator p {
+  padding: 0;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.title_selector {
+  float: right;
+  padding: 8px;
+}

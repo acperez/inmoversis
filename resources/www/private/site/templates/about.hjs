@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>InmoVersis</title>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="/images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="index">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+
+      </div>
+
+
+      <div id="contentwrap">
+        <div id="content-full">
+        <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+          <img src="/images/ronda-inversion.jpg" style="float: left; width: 200px; padding-top: 20px; padding-right: 20px"/>
+          <p style="margin-top: 30px; text-align: justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum metus massa, eget aliquam justo feugiat vel. Donec tempor a ex eget finibus. Phasellus quam sem, cursus sed ligula eu, convallis blandit quam. Pellentesque pulvinar, est sit amet venenatis efficitur, odio nibh fermentum orci, eget iaculis diam nunc nec tortor. Integer a dignissim nisi. Sed sed tristique lacus, ut iaculis turpis. Vivamus ut auctor magna, nec iaculis ex. Sed fringilla justo in dignissim pellentesque. Vestibulum eget lorem libero.
+          </p>
+          <p class="text">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet iaculis eros, eu tincidunt sem. Nulla facilisi. Nam et felis ipsum. Mauris interdum tempor posuere. Sed et accumsan quam, non elementum dui. Praesent tempor risus nec purus rhoncus ornare. Integer sed augue vitae erat commodo scelerisque vel nec quam.
+          </p>
+          <p style="clear:both; padding: 0; margin: 0">&nbsp;</p>
+          <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+          <img src="/images/responsible-investment.jpg" style="float: right; padding-top: 20px; padding-left: 20px"/>
+          <p class="text" style="text-align: justify;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet iaculis eros, eu tincidunt sem. Nulla facilisi. Nam et felis ipsum. Mauris interdum tempor posuere. Sed et accumsan quam, non elementum dui. Praesent tempor risus nec purus rhoncus ornare. Integer sed augue vitae erat commodo scelerisque vel nec quam. Pellentesque a lorem ut urna convallis finibus vitae a dolor. Mauris eleifend velit mi, consequat venenatis magna accumsan id. Duis pellentesque augue dui, vel efficitur tortor sollicitudin et. Cras at volutpat velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.<br><br>Vestibulum vel dignissim enim. Pellentesque pulvinar leo nisi, eget vulputate lectus blandit sit amet. Vestibulum scelerisque mollis eros ac tincidunt. Suspendisse sagittis eros eget erat interdum fringilla. Donec scelerisque semper leo ac euismod. Duis orci orci, semper et pharetra ut, porta eget ipsum. Duis venenatis convallis aliquam. Vivamus laoreet nunc ut dui hendrerit, id luctus sem bibendum. Praesent sed ullamcorper nulla. Maecenas nisl nisi, mattis id commodo in, placerat id lectus. Phasellus iaculis gravida diam, ut molestie nunc viverra et. Duis vel tincidunt est, convallis dignissim tortor. Duis ipsum massa, porta sit amet nulla a, viverra iaculis orci.<br><br>Maecenas justo massa, convallis ut mi sed, pulvinar consectetur odio. Vivamus semper a est eu sollicitudin. Fusce consequat enim eget leo congue, ut sodales velit fringilla. Donec et urna mi. Pellentesque pulvinar tellus felis, eget mollis lectus maximus vel. Suspendisse a consectetur arcu, id venenatis libero. Mauris faucibus quis ligula non tincidunt. Etiam efficitur pretium risus. In hac habitasse platea dictumst. Proin sit amet suscipit risus. Sed eget tincidunt odio. Fusce consequat enim eget leo congue, ut sodales velit fringilla. Donec et urna mi. Pellentesque pulvinar tellus felis, eget mollis lectus maximus vel.
+          </p>
+        </div>
+      <div style="clear: both;"> </div>
+    </div>
+    <div id="footer">
+      <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+    </div>
+  </div>
+</body>
+</html>

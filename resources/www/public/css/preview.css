@@ -1,0 +1,347 @@
+#content-full .preview_title {
+  width: 512px;
+  font-size: 20px;
+  font-family: serif;
+}
+
+.preview_title span {
+  font-weight: normal;
+  font-size: 16px;
+  margin-left: 15px;
+  color: #BBBBBB;
+}
+
+.preview_box {
+  position: relative;
+  border: 1px solid #2A2B2F;
+  width: 520px;
+}
+
+.preview_left {
+  float:left;
+  width: 260px;
+  height: 256px
+}
+
+.label {
+  position: absolute;
+  bottom: 0;
+  margin: 10px 0 10px 16px;
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+  background: rgba(41, 42, 47, 0.85);
+}
+
+#content-full .label p {
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+  padding: 0 16px;
+  margin: 6px 0;
+  color: white;
+  font-family: serif;
+  font-size: 14px;
+}
+
+.preview_left img {
+  display: block;
+  height:256px;
+  width:256px;
+}
+
+.preview_right {
+  width: 260px;
+  height: 256px;
+  float: left;
+}
+
+.progressbar {
+  height: 18px;
+  background: #cfcfcf;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #aaa #bbb #fff #bbb;    
+  box-shadow: inset 0px 2px 3px #bbb;    
+}
+
+.progressbar,
+.progressbar-inner {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.progressbar-inner {
+  width: 77%; /* Change to actual percentage */
+  text-align: right;
+  height: 100%;
+  background-size: 15px 25px;
+  background-color: #178FEE;   
+  background-image: -webkit-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -moz-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -ms-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -o-linear-gradient(12deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+    
+  box-shadow: inset 0px 2px 8px rgba(255, 255, 255, .5), inset -1px -1px 0px rgba(0, 0, 0, .2);
+}
+
+.progressbar-inner span {
+  font-size: 14px;
+  padding: 0 6px;
+  font-weight: bolder;
+  color: #2B2C31;
+  line-height: 20px;
+}
+
+.preview_right p {
+  font-size: 16px;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.preview_right p span {
+  font-weight: normal;
+  float: right;
+}
+
+.preview_right hr {
+  margin: 0 10px;
+}
+
+.preview_field {
+  padding: 6px 12px;
+}
+
+.form_progress_container {
+  text-align: center;
+}
+
+.form_panel {
+  width: 100%;
+  margin: 0; 
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form_progress {
+  display: inline-block;
+  text-align: center;
+}
+
+.form_progress a {
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid #666;
+  width: 40px;
+  height: 40px;
+  margin: 0 25px;
+}
+
+.form_progress span {
+  border-radius: 50%;
+  background-color: #1990EF;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  left: 3px;
+  position: relative;
+  top: 3px;
+  color: white;
+}
+
+.form_progress p {
+  margin: 0;
+}
+
+.form_progress_select span {
+  background-image: url(../images/menuover.png);
+}
+
+.admin_input_label {
+  margin: 0;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.admin_input_text {
+  margin: 0;
+  font-size: 16px;
+}
+
+.truncate_string {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.admin_input {
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+  padding: 3px 5px;
+  resize: none;
+}
+
+.preview_img {
+  display: block;
+  margin: auto;
+  height:225px;
+  width:300px;
+}
+
+.form_field {
+  margin: 14px 0;
+}
+
+.form_field_center {
+  width: 400px;
+  margin: 14px auto;
+}
+
+.form_field_container {
+  width: 820px;
+  margin: 20px auto 0;
+}
+
+.form_field_left {
+  width: 400px;
+  float: left;
+}
+
+.form_field_right {
+  width: 400px;
+  float: right;
+}
+
+#map {
+  height: 250px;
+  margin-top: 10px;
+}
+
+#preview {
+  text-align: center;
+}
+
+#preview p {
+  margin: 6px 0 16px 0;
+}
+
+.error {
+  box-shadow: 0px 0px 10px red;
+}
+
+.photos_preview {
+  display: inline;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.del_preview {
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.label_preview {
+  font-size: 16px;
+}
+
+.button {
+  background-color: #178fee;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
+  color: #ffffff;
+  border: 1px solid #2f5bb7;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #357ae8;
+  background-image: -webkit-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -moz-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -ms-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -o-linear-gradient(top,#2e6898,#0e4470);
+  background-image: linear-gradient(top,#2e6898,#0e4470);
+}
+
+.document_element {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 9px;
+  border: 1px solid black;
+}
+
+.document_name {
+  width: 368px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.document_input {
+  width: 400px;
+  display: inline;
+  margin: 8px 0;
+}
+
+.document_del {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes example {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.text_fade_in {
+  animation-name: example;
+  animation-duration: 1s;
+}
+
+#popup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+  display: none;
+}
+
+#popup_bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+#popup_content {
+  background-color: white;
+  margin: auto;
+  position: absolute;
+  padding: 30px;
+  top: 20%; left: 20%; right: 20%;
+}

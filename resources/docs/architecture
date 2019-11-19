@@ -1,0 +1,246 @@
+ubuntu-server
+  User: dev
+
+ubuntu-monitor
+  User: munin
+
+
+
+Mongodb -> http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+Configure mongo port -> sudo vim /etc/mongod.conf
+Restart -> sudo service mongod restart
+
+Redis -> sudo apt-get install redis-server
+
+nginx -> sudo apt-get install nginx
+Configure nginx -> sudo vim /etc/nginx/nginx.conf
+
+Configure ssl:
+- Create cert
+  sudo mkdir /etc/nginx/ssl
+  cd /etc/nginx/ssl
+  sudo openssl genrsa -des3 -out server.key 2048
+  sudo openssl req -new -key server.key -out server.csr
+- Remove passphrase to avoid requested for it when launching nginx
+  sudo cp server.key server.key.org
+  sudo openssl rsa -in server.key.org -out server.key
+- Sign cert
+  sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+- Configure server
+  sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/development
+  sudo vim /etc/nginx/sites-available/development (Point to node at :3333 and static content at /usr/local/var/www)
+  server {
+          listen   80;
+          listen   [::]:80;
+
+          server_name 192.168.1.181;
+
+          return 301 https://$server_name$request_uri;
+  }
+  server {
+          listen 443 default_server ssl;
+          server_name 192.168.1.181;
+
+          root html;
+          index index.html index.htm;
+
+          ssl on;
+          ssl_certificate /etc/nginx/ssl/server.crt;
+          ssl_certificate_key /etc/nginx/ssl/server.key;
+
+          location / {
+                  proxy_pass http://localhost:3333;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade $http_upgrade;
+                  proxy_set_header Connection 'upgrade';
+                  proxy_set_header Host $host;
+                  proxy_cache_bypass $http_upgrade;
+          }
+
+          location /static {
+                  root /usr/local/var/www;
+          }
+  }
+
+- Enable site
+  sudo ln -s /etc/nginx/sites-available/development /etc/nginx/sites-enabled/development
+  sudo rm /etc/nginx/sites-enabled/default 
+- Restart server -> sudo service nginx restart
+- Create custom 404 -> sudo vim /usr/share/nginx/html/404.html
+  <html>
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Error 404 Not Found</title>
+  <style>
+  <!--
+          body {font-family: arial,sans-serif}
+          img { border:none; }
+  //-->
+  </style>
+  </head>
+  <body>
+  <blockquote>
+          <h2>Error 404 Not Found</h2>
+          <p>Our apologies for the temporary inconvenience. The requested URL was not found on this server.  We suggest you try one of the links below:
+          <ul>
+                    <li><b>Verify url and typos</b> - The web page you were attempting to view may not exist or may have moved - try <em>checking the web address for typos</em>.<//li>
+                    <li><b>E-mail us</b> - If you followed a link from somewhere, please let us know at <a href="mailto:webmaster@example.com">webmaster@example.com</a>. Tell us where you came from and what you were looking for, and we'll do our best to fix it.</li>
+          </ul>
+  </blockquote>
+  </body>
+  </html>
+
+- Add to /etc/nginx/sites-available/development
+        error_page 404 /404.html;
+        location  /404.html {
+                internal;
+        }
+
+- Create custom 502 -> sudo vim /usr/share/nginx/html/502.html
+
+
+- Add to /etc/nginx/sites-available/development
+        error_page 502 /502.html;
+        location = /502.html {
+                internal;
+        }
+
+
+****************
+node***********
+***************
+curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install nodejs
+
+Para borrar:
+  sudo apt-get purge nodejs
+  sudo rm -r  /etc/apt/sources.list.d/nodesource.list
+  
+
+Mongoose libs:
+libkrb5-dev
+Fallo compaatibilidad node 4 con bson-ext!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************
+******* Monitoring tool *******
+*******************************
+
+On master ->  sudo apt-get install munin
+On clients -> sudo apt-get install munin-node
+
+-Configure master.
+
+In /etc/munin/munin.conf uncomment
+
+  dbdir   /var/lib/munin
+  htmldir /var/cache/munin/www
+  logdir /var/log/munin
+  rundir  /var/run/munin
+
+  tmpldir /etc/munin/templates
+
+Modify master name
+
+  [Monitor]
+      address 127.0.0.1
+      use_node_name yes
+
+Add nodes to master:
+
+  [Server1]
+      address 192.168.1.122
+      use_node_name yes
+
+Restart service
+  sudo service munin-node restart
+
+Install nginx  
+  sudo apt-get install nginx
+
+Configure nginx - sudo vim /etc/nginx/sites-enabled/default
+
+        location / {
+                rewrite ^/$ munin/ redirect; break;
+        }
+
+        location /munin/static/ {
+                alias /etc/munin/static/;
+                expires modified +1w;
+        }
+
+        location /munin/ {
+                auth_basic           "Restricted";
+                # Create the htpasswd file with the htpasswd tool.
+                auth_basic_user_file /etc/nginx/.htpasswd;
+
+                alias /var/cache/munin/www/;
+                expires modified +310s;
+        }  
+
+Install apache2-util to get htpasswd:
+  sudo apt-get install apache2-utils
+
+Add user:
+  sudo htpasswd -c /etc/nginx/.htpasswd monitor
+
+Restart nginx
+  sudo service nginx restart
+
+
+- Configure client:
+
+Set master address in /etc/munin/munin-node.conf
+  allow ^192\.168\.1\.198$
+
+Restart service
+  sudo service munin-node restart
+
+
+
+Instal imagemagick
+sudo apt-get install imagemagick
+
+
+-- Rabbit Mq --
+
+- Add repo
+echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+
+wget -O- https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sudo apt-key add -
+
+- Install
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+
+- Enable management console
+sudo rabbitmq-plugins enable rabbitmq_management
+http://ip:15672/
+
+# To start the service:
+service rabbitmq-server start
+
+# To stop the service:
+service rabbitmq-server stop
+
+# To restart the service:
+service rabbitmq-server restart
+
+# To check the status:
+service rabbitmq-server status
+
+sudo rabbitmqctl add_user [user] [pass]
+sudo rabbitmqctl set_user_tags [user] administrator
+sudo rabbitmqctl set_permissions -p / [user] ".*" ".*" ".*"
+sudo rabbitmqctl delete_user guest

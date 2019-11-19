@@ -1,0 +1,43 @@
+<div class="preview" onclick="loadProject('{{projectId}}');" style="cursor: pointer;">
+  <h2 class="preview_title">{{name}}<span id="preview_subtitle">{{subname}}</span></h2>
+  <div class="preview_box">
+    <div class="preview_left">
+      <div class="label">
+        <p>{{label}}</p>
+      </div>
+      <img src="/static/{{projectId}}/{{version}}/{{preview}}">
+    </div>
+    <div class="preview_right">
+      <div style="padding: 8px 12px;">
+        <p style="float: left;">{{=<% %>=}}{{balance}}<%={{ }}=%> €</p>
+        <p style="float: right;">{{finances.purchase.total_price}} €</p>
+        <p class="clear"></p>
+        <div class="progressbar">
+          <div class="progressbar-inner" style="width: {{=<% %>=}}{{progress}}<%={{ }}=%>%;">
+            <span>{{=<% %>=}}{{progress}}<%={{ }}=%>%</span>
+          </div>
+        </div>
+        {{=<% %>=}}{{^published}}<%={{ }}=%>
+          {{=<% %>=}}{{^closed}}<%={{ }}=%>
+            <p style="font-size: 14px; text-align: center; padding: 8px;">Faltan {{=<% %>=}}{{remaining}}<%={{ }}=%> días</p>
+          {{=<% %>=}}{{/closed}}<%={{ }}=%>
+          {{=<% %>=}}{{#closed}}<%={{ }}=%>
+            <p style="font-size: 14px; text-align: center; padding: 8px;">Proyecto finalizado</p>
+          {{=<% %>=}}{{/closed}}<%={{ }}=%>
+        {{=<% %>=}}{{/published}}<%={{ }}=%>
+        {{=<% %>=}}{{#published}}<%={{ }}=%>
+          <p style="font-size: 14px; text-align: center; padding: 8px;">Proyecto en estudio</p>
+        {{=<% %>=}}{{/published}}<%={{ }}=%>
+        <hr>
+        <div><p>Rentabilidad<span>{{#lambdas.formatPercent}}{{finances.profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+        <hr>
+        <div><p>Duración<span>{{project_duration}} años</span></p></div>
+        <hr>
+        <div><p>Precio<span>{{project_duration}} €</span></p></div>
+        <hr>
+        <div><p>Riesgo<span>56 %</span></p></div>
+      </div>
+    </div>
+    <p class="clear"></p>
+  </div>
+</div>

@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/users.css" />
+    <link rel="stylesheet" type="text/css" href="css/steps_form.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <script type="text/javascript" src="js/home_register.js" /></script>
+    <script type="text/javascript" src="js/user.js" /></script>
+    <script type="text/javascript" src="js/input_helper.js" /></script>
+    <script type="text/javascript" src="js/http_client.js" /></script>
+    <script type="text/javascript" src="js/libphonenumber.min.js" /></script>
+    <script type="text/javascript" src="js/countries.js" /></script>
+    <title>InmoVersis</title>
+  </head>
+
+  <body onload="init()">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="index">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="about">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div id="content-full">
+
+
+          <div id="register_form">
+            <div class="center">
+              <div class="form_progress"><a id="form_tab_1" class="form_progress"><span>1</span></a><p>Información</p></div>
+              <div class="form_progress"><a id="form_tab_2" class="form_progress"><span>2</span></a><p>Tipo de inversor</p></div>
+              <div class="form_progress"><a id="form_tab_3" class="form_progress"><span>3</span></a><p>Datos personales</p></div>
+              <div class="form_progress"><a id="form_tab_4" class="form_progress"><span>4</span></a><p>Documentación</p></div>
+            </div>
+
+            <div>
+              <div id="step1" class="tab-content" style="display: none;">
+                <p>Aún no eres miembro de Inmoversis, eres un usuario invitado. Como usuario invitado tienes acceso limitado a los detalles de los proyectos en curso.</p>
+                
+                <p><br></p>
+                
+                <p>Para ser miembro de Inmoversis debes ampliar tus datos personales así como añadir tus datos bancarios. La inclusión de datos bancarios no conlleva ningún coste economico, se trata de un requisito imprescindible para poder llevar a cabo inversiones en nuestros proyectos, por lo tanto solo se utilizaran tus datos bancarios cuando des la orden de participación en algun proyecto</p>
+
+                <div class="tab_control">
+                  <div class="right quarter">
+                    <button id="next_btn1" type="button" class="formBtn">Siguiente</button>
+                  </div>
+                  <p class="clear"></p>
+                </div>
+              </div>
+
+              <div id="step2" class="tab-content" style="display: none;">
+                <p>Conforme a las leyes antifraude de España en lo referente a crowdfunding se definen dos tipos de inversores en función de las características de cada usuario. Los inversores se clasifican en inversores acreditados e inversores no acreditados.</p>
+                
+                <div class="investor-selector">
+                  <img id="inv_natural_btn" src="/images/investor_unacredited.png" class="inv-selected">
+                  <img id="inv_legal_btn" src="/images/investor_acredited.png" class="unselected" style="margin-left: 10%">
+                </div>
+
+                <div id="info_natural_user">
+                  <p><b>Inversores no acreditados</b></p>
+                  <p>Particulares que no cumplan con las condiciones anteriores. Tendrán un límite de 3.000€ a invertir por proyecto y 10.000€ a invertir por plataforma, durante un periodo de 12 meses.</p>
+                </div>
+
+                <div id="info_legal_user" style="display: none;">
+                  <p><b>Inversores acreditados</b></p>
+
+                  <p>Inversores particulares con una renta superior a 50.000€ anuales y un patrimonio de 100.000€.</p>
+
+                  <p>Los empresarios que individualmente reúnan, al menos, dos de las siguientes condiciones:</p>
+                  <ul>
+                    <li>El total de las partidas del activo sea igual o superior a 1 millón de euros.</li>
+                    <li>El importe de su cifra anual de negocios sea igual o superior a 2 millones de euros.</li>
+                    <li>Los recursos propios sean iguales o superiores a 300.000 euros.</li>
+                  </ul>
+                  <p>Es necesario presentar documentacion para registrarse.</p>
+                </div>
+
+                <div class="tab_control">
+                  <div class="left quarter">
+                    <button id="prev_btn2" type="button" class="formBtn">Anterior</button>
+                  </div>
+                  <div class="right quarter">
+                    <button id="next_btn2" type="button" class="formBtn">Siguiente</button>
+                  </div>
+                  <p class="clear"></p>
+                </div>
+              </div>
+              
+              <div id="step3" style="display: none;" class="tab-content form-height">
+
+                <div>
+                    <p class="field form_header">Tipo de usuario</p
+                    ><div class="value"
+                      ><select id="user-type" class="select"
+                        ><option value="person">Particular</option
+                        ><option value="company">Empresa</option
+                      ></select>
+                    </div>
+                </div>
+
+                <p id="id-label" class="form_header">Datos de identificación</p>
+
+                <div>
+                    <p class="field">Nombre</p
+                    ><input id="name" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="name_report"/></p>
+                </div>
+                
+                <div>
+                    <p class="field">Apellidos</p
+                    ><input id="lastname" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="lastname_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Nacionalidad</p
+                  ><div id="nationality-div" class="value"></div>
+                </div>
+
+                <div>
+                  <p class="field">NIF o NIE</p
+                  ><input id="nif" type="text" class="value" maxlength="9"
+                  ><p class="input_report value"><span id="nif_report"/></p>
+                </div>
+
+                <p id="contact-label" class="form_header">Datos de contacto</p>
+
+                <div>
+                  <p class="field">País del teléfono</p
+                  ><div id="phone-location-div" class="value"></div>
+                </div>
+
+                <div>
+                  <p class="field">Número de teléfono</p
+                  ><input id="phone" type="text" class="value" maxlength="15" 
+                  ><p class="input_report value"><span id="phone_report"/></p>
+                </div>
+
+                <p id="address-label" class="form_header">Domicilio fiscal</p>
+
+                <div>
+                  <p class="field">Dirección</p
+                  ><input id="address" type="text" class="value" maxlength="256"
+                  ><p class="input_report value"><span id="address_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Código postal</p
+                  ><input id="postal_code" type="text" class="value"
+                  ><p class="input_report value"><span id="postal_code_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Municipio</p
+                  ><input id="city" type="text" class="value" maxlength="140"
+                  ><p class="input_report value"><span id="city_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Provincia</p
+                  ><input id="region" type="text" class="value" maxlength="140"
+                  ><p class="input_report value"><span id="region_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">País</p
+                  ><div id="country-div" class="value"></div>
+                </div>
+
+                <div id="company-data">
+                  <p class="form_header">Datos de la empresa</p>
+
+                  <div>
+                      <p class="field">Razón social</p
+                      ><input id="company_name" type="text" class="value" maxlength="256"
+                      ><p class="input_report value"><span id="company_name_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">CIF</p
+                    ><input id="cif" type="text" class="value" maxlength="9"
+                    ><p class="input_report value"><span id="cif_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Dirección</p
+                    ><input id="company_address" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="company_address_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Código postal</p
+                    ><input id="company_postal_code" type="text" class="value"
+                    ><p class="input_report value"><span id="company_postal_code_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Municipio</p
+                    ><input id="company_city" type="text" class="value" maxlength="140"
+                    ><p class="input_report value"><span id="company_city_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Provincia</p
+                    ><input id="company_region" type="text" class="value" maxlength="140"
+                    ><p class="input_report value"><span id="company_region_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">País</p
+                    ><div id="company-country-div" class="value"></div>
+                  </div>
+                </div>
+
+                <div class="tab_control">
+                  <div class="left quarter">
+                    <button id="prev_btn3" type="button" class="formBtn">Anterior</button>
+                  </div>
+                  <div id="register_form_report" class="toolbar_error"></div>
+                  <div class="right quarter">
+                    <button id="next_btn3" type="button" class="formBtn">Siguiente</button>
+                  </div>
+                  <p class="clear"></p>
+                </div>
+              </div>
+
+              <div id="step4" class="tab-content" style="display: none;">
+                <div class="form_double_field">
+                  <p>Debido a que la creacióm de tu cuenta conlleva la apertura de una cuenta bancária, de acuerdo con <a href="http://www.boe.es/boe/dias/2010/04/29/pdfs/BOE-A-2010-6737.pdf" target="_blank">la Ley de Prevención de Blanqueo de Capitales y Financiación del Terrorismo (LPBC/FT)</a> aprobada en el año 2010, según los artículos 3, 4 y 5 de dicha ley, nos vemos obligados a realizar una doble identificación de nuestros clientes para evitar mantener relaciones comerciales con personas involucradas en delitos de blanqueo de capitales, terrorismo, corrupción gubernamental, etc.</p>
+
+                  <p><br></p>
+
+                  <p>Por un lado, debemos llevar a cabo una identificación formal de los clientes mediante la presentación del DNI, pasaporte y NIE para los clientes extranjeros. Y por otro lado, debemos realizar una identificación real, es decir, conocer en todo momento quién está detrás de una sociedad que abre una cuenta</p>
+
+                  <p><br></p>
+
+                  <p>Por ello, es necesario que nos proporciones los siguientes documentos en formato electrónico (archivo PDF, JPG, JPEG, BMP, GIF, o PNG):</p>
+                </div>
+
+                <div>
+                  <ul class="list_parent">
+                    <li id="nif_doc" class="list">
+                      <p id="nif_label" class="list_header"></p>
+                      <button id="nif_button" type="button" class="button input_button">Seleccionar archivo</button>
+                      <p id="nif_path" class="file_path"></p>
+                      <p id="nif_error" class="file_error"></p>
+                      <input id="nif_upload" type="file" style="display: none">
+                      <p class="clear"></p>
+                    </li>
+
+                    <li id="pp_doc" class="list">
+                      <p id="pp_label" class="list_header"></p>
+                      <button id="pp_button" type="button" class="button input_button">Seleccionar archivo</button>
+                      <p id="pp_path" class="file_path"></p>
+                      <p id="pp_error" class="file_error"></p>
+                      <input id="pp_upload" type="file" style="display: none">
+                      <p class="clear"></p>
+                    </li>
+
+                    <li id="cy_doc1" class="list">
+                      <p class="list_header">Escritura de constitución de la empresa</p>
+                      <button id="cy_doc1_button" type="button" class="button input_button">Seleccionar archivo</button>
+                      <p id="cy_doc1_path" class="file_path"></p>
+                      <p id="cy_doc1_error" class="file_error"></p>
+                      <input id="cy_doc1_upload" type="file" style="display: none">
+                      <p class="clear"></p>
+                    </li>
+
+                    <li id="cy_doc2" class="list">
+                      <p class="list_header">Documento de actividad de la empresa (certificado del Registro Mercantil, certificado tributario o documento de pago de impuestos del IVA, con una antiguedad mázima de 3 meses)</p>
+                      <button id="cy_doc2_button" type="button" class="button input_button">Seleccionar archivo</button>
+                      <p id="cy_doc2_path" class="file_path"></p>
+                      <p id="cy_doc2_error" class="file_error"></p>
+                      <input id="cy_doc2_upload" type="file" style="display: none">
+                      <p class="clear"></p>
+                    </li>
+
+                    <li id="cy_doc3" class="list">
+                      <p class="list_header">Documento de Identidad de los socios que tengan más de un 25% de participaciones de la sociedad.</p>
+                      <button id="cy_doc3_button" type="button" class="button input_button">Seleccionar archivo</button>
+                      <p id="cy_doc3_path" class="file_path"></p>
+                      <p id="cy_doc3_error" class="file_error"></p>
+                      <input id="cy_doc3_upload" type="file" style="display: none">
+                      <p class="clear"></p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tab_control">
+                  <div class="left quarter">
+                    <button id="prev_btn4" type="button" class="formBtn">Anterior</button>
+                  </div>
+                  <div id="register_docs_report" class="toolbar_error"></div>
+                  <div class="right quarter">
+                    <button id="next_btn4" type="button" class="formBtn">Finalizar</button>
+                  </div>
+                  <p class="clear"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

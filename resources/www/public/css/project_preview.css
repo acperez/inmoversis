@@ -1,0 +1,131 @@
+.preview {
+  width: 514px;
+}
+
+.preview_title {
+  font-size: 20px!important;
+  font-family: serif;
+  margin: 0;
+}
+
+.preview_title span {
+  font-weight: normal;
+  font-size: 16px;
+  margin-left: 15px;
+  color: #BBBBBB;
+}
+
+.preview_box {
+  position: relative;
+  border: 1px solid #2A2B2F;
+  width: 512px;
+}
+
+.preview_left {
+  float:left;
+  width: 256px;
+  height: 200px
+}
+
+.label {
+  position: absolute;
+  bottom: 0;
+  margin: 10px 0 10px 16px;
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+  background: rgba(41, 42, 47, 0.85);
+}
+
+.label p {
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+  padding: 0 16px!important;
+  margin: 6px 0;
+  color: white!important;
+  font-family: serif;
+  font-size: 14px;
+}
+
+.preview_left img {
+  display: block;
+  height:200px;
+  width:256px;
+}
+
+.preview_right {
+  width: 256px;
+  height: 200px;
+  float: left;
+}
+
+.progressbar {
+  height: 22px;
+  background: #cfcfcf;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #aaa #bbb #fff #bbb;
+  box-shadow: inset 0px 2px 3px #bbb;
+}
+
+.progressbar,
+.progressbar-inner {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.progressbar-inner {
+  width: 77%; /* Change to actual percentage */
+  text-align: right;
+  height: 100%;
+  background-size: 15px 25px;
+  background-color: #178FEE;
+  background-image: -webkit-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -moz-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -ms-linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: -o-linear-gradient(12deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+
+  box-shadow: inset 0px 2px 8px rgba(255, 255, 255, .5), inset -1px -1px 0px rgba(0, 0, 0, .2);
+}
+
+.progressbar-inner span {
+  font-size: 14px;
+  padding: 0 6px;
+  font-weight: bolder;
+  color: #2B2C31;
+  line-height: 20px;
+}
+
+.preview_right p {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.preview_right p span {
+  font-weight: normal;
+  float: right;
+}
+
+.preview_right hr {
+  margin: 1px 0;
+}
+
+.preview_field {
+  padding: 6px 12px;
+}
+
+

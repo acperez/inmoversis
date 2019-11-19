@@ -1,0 +1,15 @@
+{{^user}}
+  <ul class="menu_right">
+    <li><a href="/login">Iniciar sesi&oacute;n</a></li>
+    <li><a href="/register">Registrate</a></li>
+  </ul>
+{{/user}}
+
+{{#user}}
+<ul class="menu_right">
+  <li><p id="menu_name">{{user}}</p></li>
+  <li><a href="/home">&Aacute;rea personal</a></li>
+  <li><a href="/logout">Cerrar sesi&oacute;n</a></li>
+</ul>
+{{/user}}
+

@@ -1,0 +1,80 @@
+#tabs {
+  line-height: 38px;
+}
+
+#tabs ul {
+  padding: 0 10px;
+  margin: 0;
+}
+
+#tabs ul li {
+  display: block;
+  float: left;
+}
+
+#tabs ul li a {
+  display: block;
+  padding: 0 20px;
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  background-color: #188EEE;
+  border-radius: 6px 12px 0px 0px;
+  margin-right: -1px;
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+#tabs ul li a.disabled {
+  background-color: #8a8a8a;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+#tabs ul li a.unselected:hover {
+  background-image: url(/images/menu_over.png);
+  background-repeat: repeat-x;
+  cursor: pointer;
+}
+
+#tabs ul li a.selected {
+  background-image: url(/images/menu_selected.png);
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.tab-content {
+  padding: 30px 35px 0;
+  border: 3px solid #0E4470;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.error {
+  text-align: center;
+  margin-bottom: 2px;
+  color: red!important;
+  height: 30px;
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.text_fade_in {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+.tab_control {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.newline {
+  margin-bottom: 30px;
+}
+
+.toolbar-margin {
+  margin: 0px 0 10px 0;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/register.js" /></script>
+    <script type="text/javascript" src="js/input_helper.js" /></script>
+    <script type="text/javascript" src="js/http_client.js" /></script>
+    <title>InmoVersis</title>
+  </head>
+
+  <body onload="init()">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="index">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="about">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div class="form_panel">
+          <form class="form" onsubmit="submitRegister(this); return false">
+            <p class="register_text">Rellena el formulario para crear un usuario</p>
+              <input id="email" name="email" type="text" maxlength="256" placeholder="Email" class="input">
+              <p class="input_report"><span id="email_report"/></p>
+              <p class="clear"/>
+
+              <input id="password_main" name="password" type="password" maxlength="40" placeholder="Contrase&ntilde;a" class="input">
+              <p class="input_report"><span id="password_main_report"/></p>
+              <p class="clear"/>
+
+              <input id="password_check" name="password_check" type="password" maxlength="40" placeholder="Repite la contrase&ntilde;a" class="input">
+              <p class="input_report"><span id="password_check_report"/></p>
+              <p class="clear"/>
+
+              <input id="name" name="name" type="text" maxlength="256" placeholder="Nombre" class="input"/>
+              <p class="input_report"><span id="name_report"/></p>
+              <p class="clear"/>
+
+              <input id="send" type="submit" value="Enviar" class="submit">
+          </form>
+        </div>
+        <p id="register_message" align="center"></p>
+      </div>
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

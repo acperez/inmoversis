@@ -1,0 +1,47 @@
+{
+  "name": "inmoVersis",
+  "version": "0.1.0",
+  "description": "Crowfunding platform for real estate investments.",
+  "main": "inmoversis.js",
+  "author": "Albert Crespell Perez",
+  "repository": {
+    "type": "git",
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "bugs": {
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "keywords": [
+    "crowfunding",
+    "real-estate",
+    "invest"
+  ],
+  "scripts": {
+    "postinstall": "node bin/deploy.js",
+    "start": "node inmoversis.js"
+  },
+  "dependencies": {
+    "express": "4.13.0",
+    "express-session": "1.13.0",
+    "cookie-parser": "1.4.2",
+    "log4js": "0.6.36",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
+    "mongoose": "4.4.19",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.15.1",
+    "connect-redis": "3.0.2",
+    "redis": "2.5.3",
+    "fs-extra": "0.30.0",
+    "hogan-express": "0.5.2",
+    "jsonschema": "1.1.0",
+    "node-uuid": "1.4.7",
+    "request": "2.72.0",
+    "google-libphonenumber": "1.0.21",
+    "sanitize-html": "1.11.4",
+    "gm": "1.22.0",
+    "multer" : "1.1.0",
+    "common": "file:../common"
+  },
+  "license" : "AGPL-3.0"
+}

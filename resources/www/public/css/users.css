@@ -1,0 +1,29 @@
+dt {
+  float: left;
+  clear: both;
+  width: 20%;
+  font-weight: bold;
+}
+
+dt:after {
+  content: ":";
+}
+
+dd {
+  float: left;
+  width: 60%;
+}
+
+#edit-user-data-form,
+#edit-user-password-form {
+	display: none;
+}
+
+.form_center {
+	margin-left: 30%;
+	width: 40%;
+}
+
+.form_button {
+	width: 49%;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/projects.css" />
+    <script type="text/javascript" src="static/js/login.js" /></script>
+    <script type="text/javascript" src="/js/input_helper.js" /></script>
+    <script type="text/javascript" src="/js/http_client.js" /></script>
+    <title>InmoVersis admin</title>
+  </head>
+
+  <body onload="init()"">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="/images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul class="menu_right">
+            <li><p id="menu_name">Administraci&oacute;n</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div class="form_panel">
+          <form class="form" onsubmit="submitLogin(this); return false">
+            <div class="form_image">
+              <img id="login-image" src="/images/login.png" align="middle">
+            </div>
+            <input id="email" name="email" type="text" placeholder="Email" class="admin_input login_input" autofocus>
+            <p class="input_report"><span id="email_report"/></p>
+            <p class="clear"/>
+            <input id="password" name="password" type="password" placeholder="Contrase&ntilde;a" class="admin_input login_input">
+            <p class="input_report"><span id="password_report"/></p>
+            <p class="clear"/>
+
+            <input id="send" type="submit" value="Enviar" class="button" style="width: 50%">
+          </form>
+        </div>
+
+        <p id="login_message" class="text_error" align="center"></p>
+
+      </div>
+
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

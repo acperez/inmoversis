@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/users.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/projects.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/payment.css" />
+    <link rel="stylesheet" type="text/css" href="/css/project_preview.css" />
+    <script type="text/javascript" src="/js/http_client.js" /></script>
+    <script type="text/javascript" src="/js/input_helper.js" /></script>
+    <script type="text/javascript" src="static/js/users.js" /></script>
+    <script type="text/javascript" src="static/js/project_form.js" /></script>
+    <script type="text/javascript" src="static/js/projects.js" /></script>
+    <script type="text/javascript" src="static/js/admin.js" /></script>
+    <script type="text/javascript" src="static/js/mangopay.js" /></script>
+    <script type="text/javascript" src="static/js/payment.js" /></script>
+    <title>InmoVersis</title>
+  </head>
+
+  <body onload="init();">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="/images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a id="tab-users" class="selected">Usuarios</a></li>
+            <li><a id="tab-projects">Proyectos</a></li>
+            <li><a id="tab-payment">Sericio de pagos</a></li>
+          </ul>
+
+          <ul class="menu_right">
+            <li><a id="refresh"><div><img class="refresh" src="/images/refresh.png"/></div></a></li>
+            <li><a href="logout">Cerrar sesi&oacute;n</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div id="content-full">
+
+          <div id="tab-users-content">
+            <div id="users"></div>
+            <p id="users_message" class="center" style="display: none; color: red"></p>
+          </div>
+          <div id="tab-projects-content" style="display: none">
+            <div id="tabs">
+              <ul>
+                <li><a id="tab-status" class="selected">Estado</a></li>
+                <li><a id="tab-edit" class="unselected">Editar</a></li>
+                <li><a id="tab-create" class="unselected">crear</a></li>
+                <p class="clear"></p>
+              </ul>
+            </div>
+
+            <div class="tab-content">
+              <div id="tab-status-content">
+                <div id="projects"></div>
+                <p id="status_message" class="center" style="display: none"></p>
+              </div>
+
+              <div id="tab-edit-content" style="display: none">
+                <div class="edit_header">
+                  <p class="admin_label_single">Proyecto</p><select id="project" class="admin_input"></select><button id="project_edit_button" type="button" class="button">Editar</button>
+                </div>
+                <p id="edit_error" style="display: none"></p>
+              </div>
+
+              <div id="tab-create-content" style="display: none"></div>
+
+              <div id="project_form" style="display: none">
+                <div class="center">
+                  <div class="form_progress"><a id="form_tab_1" class="form_progress form_progress_select"><span>1</span></a><p>Proyecto</p></div>
+                  <div class="form_progress"><a id="form_tab_2" class="form_progress"><span>2</span></a><p>Vivienda</p></div>
+                  <div class="form_progress"><a id="form_tab_3" class="form_progress"><span>3</span></a><p>Finanzas</p></div>
+                  <div class="form_progress"><a id="form_tab_4" class="form_progress"><span>4</span></a><p>Documentos</p></div>
+                  <div class="form_progress"><a id="form_tab_5" class="form_progress"><span>5</span></a><p>Finalizar</p></div>
+                </div>
+
+                <div id="step1">
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Nombre</p>
+                      <input id="name" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Subnombre</p>
+                      <input id="subname" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Etiqueta</p>
+                      <input id="label" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Duraci&oacute;n de la campa&ntilde;a (d&iacute;as)</p>
+                      <input id="campaign_duration" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <p>Puntos Clave</p>
+                    <textarea rows="4" cols="50" id="key_points"></textarea>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Duraci&oacute;n del proyecto (meses)</p>
+                      <input id="project_duration" type="text" >
+                    </div>
+                    <div class="right">
+                      <p>Estado</p>
+                      <select id="status" disabled>
+                        <option value="hidden">Oculto</option>
+                        <option value="published">En estudio</option>
+                        <option value="open">Abierto</option>
+                        <option value="closed">Cerrado</option>
+                        <option value="finished">Finalizado</option>
+                      </select>
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div id="update_fields">
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Balance de la campa&ntilde;a</p>
+                        <input id="project_balance" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Im&aacute;gen del proyecto (500*380)</p>
+                      <input id="image_input" type="file" style="display: none">
+                      <button id="image_button" type="button" class="button">A&ntilde;adir im&aacute;gen</button>
+                      <p class="clear"></p>
+                      <img id="image" class="preview_img" src="static/images/default_preview.jpg">
+                    </div>
+
+                    <div class="right">
+                      <p>Im&aacute;gen preview (256*200)</p>
+                      <input id="preview_input" type="file" style="display: none">
+                      <button id="preview_button" type="button" class="button">A&ntilde;adir im&aacute;gen</button>
+                      <p class="clear"/>
+                      <img id="preview" class="preview_img" src="static/images/default_preview.jpg">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+                </div>
+
+                <div id="step2" style="display: none;">
+
+                  <div class="form_double_field">
+                    <p>Descripci&oacute;n</p>
+                    <textarea rows="4" cols="50" id="house_description"></textarea>
+                  </div>
+
+                  <div class="form_double_field">
+                    <p>Direcci&oacute;n</p>
+                    <input id="address" type="text">
+                  </div>
+                  <div id="map"></div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Tama&ntilde;o (metros)</p>
+                      <input id="size" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Habitaciones</p>
+                      <input id="rooms" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Ba&ntilde;os</p>
+                      <input id="wc" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Estado</p>
+                      <input id="house_status" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Tipo</p>
+                      <input id="type" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Precio por metro cuadrado</p>
+                      <input id="price_per_meter" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+ 
+                  <div>
+                    <div>
+                      <p style="font-weight: bolder">Fotografias</p>
+                      <input id="photos_input" type="file" multiple style="display: none">
+                      <button id="photos_button" type="button" style="width: 49%" class="button">A&ntilde;adir im&aacute;gen</button>
+                    </div>
+                    <p class="clear"/>
+                    <div id="photos"></div>
+                  </div>
+                </div>
+
+                <div id="step3" style="display: none;">
+
+                  <div class="form_double_field">
+                    <p>Descripci&oacute;n</p>
+                    <textarea rows="4" cols="50" id="financials_description"></textarea>
+                  </div>
+
+                  <h2>Compra</h2>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Precio de adquisici&oacute;n (€)</p>
+                      <input id="purchase_price" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Gastos de adquisici&oacute;n (€)</p>
+                      <input id="purchase_taxes" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Gastos de reformas (€)</p>
+                      <input id="purchase_refurbishment" type="text">
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <div class="form_double_field">
+                    <div class="left">
+                      <p>Imprevistos (€)</p>
+                      <input id="purchase_unforeseen" type="text">
+                    </div>
+                    <div class="right">
+                      <p>Coste total a financiar (€)</p>
+                      <input id="purchase_total_price" type="text" readonly>
+                    </div>
+                    <p class="clear"></p>
+                  </div>
+
+                  <h2>Venta<img id="sell_enable" src="/images/max_light.png" class="foldout"></h2>
+
+                  <div id="sell_panel" style="display: none">
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Precio de venta (€)</p>
+                        <input id="sell_price" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Rentabilidad bruta (%)</p>
+                        <input id="sell_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Comisi&oacute;n de venta (%)</p>
+                        <input id="sell_fee" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Comisi&oacute;n de venta nominal (€)</p>
+                        <input id="sell_fee_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Impuesto de plusval&iacute;a (%)</p>
+                        <input id="sell_value_added_tax" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Valor del impuesto de plusval&iacute;a (€)</p>
+                        <input id="sell_value_added_tax_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Rentabilidad neta de la venda (%)</p>
+                        <input id="sell_net_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Impuesto de sociedades (%)</p>
+                        <input id="sell_corporate_tax" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Valor del impuesto de sociedades (€)</p>
+                        <input id="sell_corporate_tax_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Beneficio neto (€)</p>
+                        <input id="sell_corporate_profit" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Comisi&oacute;n de gesti&oacute;n (%)</p>
+                        <input id="sell_management_fee" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Valor de la comisi&oacute;n de gesti&oacute;n (€)</p>
+                        <input id="sell_management_fee_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Comisi&oacute;n a promotor (%)</p>
+                        <input id="sell_property_developer_fee" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Valor de la comisi&oacute;n a promotor (€)</p>
+                        <input id="sell_property_developer_fee_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Beneficio de la plataforma (€)</p>
+                        <input id="sell_platform_profit" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Rentabilidad del inversor (%)</p>
+                        <input id="sell_investor_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+                  </div>
+
+                  <h2>Alquiler<img id="rent_enable" src="/images/max_light.png" class="foldout"></h2>
+                  <div id="rent_panel" style="display: none">
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Alquiler bruto (€)</p>
+                        <input id="rent_payment" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Rentabilidad bruta del alquiler (%)</p>
+                        <input id="rent_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Seguro de alquiler (€)</p>
+                        <input id="rent_insurance" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Seguro del hogar (€)</p>
+                        <input id="rent_home_insurance" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>IBI (€)</p>
+                        <input id="rent_ibi" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Comunidad de vecinos (€)</p>
+                        <input id="rent_community_expenses" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Imprevistos (€)</p>
+                        <input id="rent_unforeseen" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Alquiler neto (€)</p>
+                        <input id="rent_earnings" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Rentabilidad neta del alquiler (%)</p>
+                        <input id="rent_net_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Amortizaci&oacute;n (€)</p>
+                        <input id="rent_amortization" type="text">
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Impuesto de sociedades (%)</p>
+                        <input id="rent_corporate_tax" type="text">
+                      </div>
+                      <div class="right">
+                        <p>Valor de inpuesto de sociedades (€)</p>
+                        <input id="rent_corporate_tax_nominal" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Beneficio neto (€)</p>
+                        <input id="rent_corporate_profit" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="left">
+                        <p>Comisi&oacute;n de la plataforma (%)</p>
+                        <input id="rent_platform_fee" type="text">
+                      </div>
+
+                      <div class="right">
+                        <p>Beneficio de la plataforma (€)</p>
+                        <input id="rent_platform_profit" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+
+                    <div class="form_double_field">
+                      <div class="right">
+                        <p>Rentabilidad del inversor (%)</p>
+                        <input id="rent_investor_profitability" type="text" readonly>
+                      </div>
+                      <p class="clear"></p>
+                    </div>
+                  </div>
+
+                  <h2>Total</h2>
+
+                  <div class="form_field_container">
+                    <p class="admin_input_label">Rentabilidad neta (%)</p>
+                    <input id="total_profitability" name="total_profitability" type="text" readonly class="admin_input">
+                  </div>
+                </div>
+
+                <div id="step4" style="display: none;">
+                  <div>
+                    <div>
+                      <p style="font-weight: bolder">Documentos</p>
+                      <input id="documents_input" type="file" multiple style="display: none">
+                      <button id="documents_button" type="button" class="button" style="width: 49%">A&ntilde;adir ficheros</button>
+                    </div>
+                    <p class="clear"></p>
+                    <div id="documents"></div>
+                    <p class="clear"></p>
+                  </div>
+                </div>
+
+                <div id="step5" style="display: none;">
+                  <div class="center">
+                    <input id="send" type="button" value="Crear proyecto" class="button" style="width: 50%">
+                    <input id="update" type="button" value="Actualizar proyecto" class="button" style="width: 50%">
+                    <p id="report" class="admin_input_text"></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div id="tab-payment-content" style="display: none">
+            <h1 id=payment_service></h1> 
+            <div>
+              <button id="payment_test_btn" type="button" class="button">Test</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

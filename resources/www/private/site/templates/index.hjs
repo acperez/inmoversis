@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/image-viewer.css" />
+    <title>InmoVersis</title>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="/images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="about">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+
+      </div>
+
+      <div id="contentwrap">
+        <div id="content">
+        <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+          <p class="text">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum metus massa, eget aliquam justo feugiat vel. Donec tempor a ex eget finibus. Phasellus quam sem, cursus sed ligula eu, convallis blandit quam. Pellentesque pulvinar, est sit amet venenatis efficitur, odio nibh fermentum orci, eget iaculis diam nunc nec tortor. Integer a dignissim nisi. Sed sed tristique lacus, ut iaculis turpis. Vivamus ut auctor magna, nec iaculis ex. Sed fringilla justo in dignissim pellentesque. Vestibulum eget lorem libero.
+          </p>
+
+          <ul>
+            <li>Nullam porta arcu mattis diam efficitur porttitor.</li>
+            <li>Nunc eleifend tortor ac tortor aliquet mattis vel a lacus.</li>
+            <li>Nullam a libero id est tempor aliquet.</li>
+          </ul>
+
+          <div id="image-viewer">
+            <img src="/images/barcelona-1.jpg"/>
+            <img src="/images/barcelona-2.jpg"/>
+            <img src="/images/barcelona-3.jpg"/>
+            <img src="/images/barcelona-4.jpg"/>
+          </div>
+
+          <p class="text">
+Quisque eget bibendum neque. Maecenas porta lacus at lobortis gravida. Quisque odio eros, egestas ut lacus quis, venenatis interdum diam. Maecenas sit amet mattis ex, ut cursus leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam ullamcorper id felis at laoreet. Morbi vestibulum, lacus quis facilisis interdum, quam mi lacinia arcu, ut sollicitudin erat diam euismod velit. Nulla turpis turpis, laoreet ac malesuada eu, efficitur at risus. Duis et arcu sagittis, cursus urna a, hendrerit ipsum. Curabitur dapibus tortor ac ex venenatis, vel ultricies diam mattis. Phasellus velit elit, blandit nec dolor a, tincidunt hendrerit ligula. Cras ac pulvinar nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vel mollis purus.
+          </p>
+
+          <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+          <p class="text">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet iaculis eros, eu tincidunt sem. Nulla facilisi. Nam et felis ipsum. Mauris interdum tempor posuere. Sed et accumsan quam, non elementum dui. Praesent tempor risus nec purus rhoncus ornare. Integer sed augue vitae erat commodo scelerisque vel nec quam. Pellentesque a lorem ut urna convallis finibus vitae a dolor. Mauris eleifend velit mi, consequat venenatis magna accumsan id. Duis pellentesque augue dui, vel efficitur tortor sollicitudin et. Cras at volutpat velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+Vestibulum vel dignissim enim. Pellentesque pulvinar leo nisi, eget vulputate lectus blandit sit amet. Vestibulum scelerisque mollis eros ac tincidunt. Suspendisse sagittis eros eget erat interdum fringilla. Donec scelerisque semper leo ac euismod. Duis orci orci, semper et pharetra ut, porta eget ipsum. Duis venenatis convallis aliquam. Vivamus laoreet nunc ut dui hendrerit, id luctus sem bibendum. Praesent sed ullamcorper nulla. Maecenas nisl nisi, mattis id commodo in, placerat id lectus. Phasellus iaculis gravida diam, ut molestie nunc viverra et. Duis vel tincidunt est, convallis dignissim tortor. Duis ipsum massa, porta sit amet nulla a, viverra iaculis orci.
+
+Maecenas justo massa, convallis ut mi sed, pulvinar consectetur odio. Vivamus semper a est eu sollicitudin. Fusce consequat enim eget leo congue, ut sodales velit fringilla. Donec et urna mi. Pellentesque pulvinar tellus felis, eget mollis lectus maximus vel. Suspendisse a consectetur arcu, id venenatis libero. Mauris faucibus quis ligula non tincidunt. Etiam efficitur pretium risus. In hac habitasse platea dictumst. Proin sit amet suscipit risus. Sed eget tincidunt odio.
+          </p>
+        </div>
+
+        <div id="sidebar">
+          <h3>Lorem ipsum</h3>
+            <ul>
+              <li>Convallis ut mi sed.</li>
+              <li>Pellentesque pulvinar leo nisi, eget vulputate lectus blandit sit amet. Vestibulum scelerisque mollis eros ac tincidunt.</li>
+              <li>Vestibulum vel dignissim enim.</li>
+              <li>Efficitur at risus.</li>
+              <li>Mauris faucibus quis ligula non tincidunt. Etiam efficitur pretium risus.</li>
+              <li>Nulla turpis turpis.</li>
+              <li>Morbi vestibulum, lacus quis.</li>
+            </ul>
+
+          <h3>Lorem ipsum dolor sit amet</h3>
+            <ul>
+              <li><a href="#">Class aptent taciti</a></li>
+              <li><a href="#">Morbi in dolor</a></li>
+              <li><a href="#">Praesent ultricies</a></li>
+              <li><a href="#">Aenean euismod</a></li>
+              <li><a href="#">Donec sempe</a></li>
+              <li><a href="#">Class aptent taciti</a></li>
+            </ul>
+
+          <h3>Lorem ipsum dolor sit amet</h3>
+            <p class="text">
+Maecenas justo massa, convallis ut mi sed, pulvinar consectetur odio. Vivamus semper a est eu sollicitudin. Fusce consequat enim eget leo congue, ut sodales velit fringilla. Donec et urna mi. Pellentesque pulvinar tellus felis, eget mollis lectus maximus vel.</p>
+        </div>
+
+      <div style="clear: both;"> </div>
+    </div>
+    <div id="footer">
+      <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+    </div>
+  </div>
+</body>
+</html>

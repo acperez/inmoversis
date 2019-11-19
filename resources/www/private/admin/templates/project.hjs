@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/project.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slider.css" />
+    <script type="text/javascript" src="/js/http_client.js" /></script>
+    <script type="text/javascript" src="/js/input_helper.js" /></script>
+    <script type="text/javascript" src="/js/project.js" /></script>
+    <script type="text/javascript" src="/js/slider.js" /></script>
+    {{^public}}
+    <script type="text/javascript" src="/admin/static/js/project_admin.js" /></script>
+    {{/public}}
+    <title>InmoVersis</title>
+  </head>
+
+  <body onload="init('{{projectId}}', {{house.location.lat}}, {{house.location.lon}})">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="/images/logo.png"/>
+        </div>
+
+        {{^public}}
+        <div id="menu">
+        </div>
+        {{/public}}
+        {{#public}}
+        <div id="menu">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <li><a href="/projects">Proyectos</a></li>
+            <li><a href="/about">Acerca</a></li>
+          </ul>
+
+          {{=<% %>=}}{{> menu }}<%={{ }}=%>
+        </div>
+        {{/public}}
+
+      </div>
+
+      <div id="contentwrap">
+        <h2 class="title">{{name}}<span>{{subname}}</span></h2>
+        <div>
+          <div class="project_content">
+            {{^public}}
+            <img class="main_img" src="{{image}}">
+            {{/public}}
+            {{#public}}
+            <img class="main_img" src="/static/{{projectId}}/{{version}}/{{image}}">
+            {{/public}}
+            <p class="key_points">{{key_points}}</p>
+            <p class="clear"></p>
+          </div>
+
+          <div class="details_container">
+            <div class="details">
+
+              <div style="padding: 8px 12px;">
+                <p class="details_balance">{{=<% %>=}}{{balance}}<%={{ }}=%> €</p>
+                <p class="details_total_price">{{#lambdas.formatMoney}}{{finances.purchase.total_price}}{{/lambdas.formatMoney}} €</p>
+                <p class="clear"></p>
+                <div class="progressbar">
+                  <div class="progressbar-inner" style="width: {{=<% %>=}}{{progress}}<%={{ }}=%>%;"><span>{{=<% %>=}}{{progress}}<%={{ }}=%>%</span></div>
+                </div>
+                <p class="details_remaining">Faltan {{=<% %>=}}{{remaining}}<%={{ }}=%> días</p>
+                <hr>
+                <div><p class="details_list">Rentabilidad<span>{{#lambdas.formatPercent}}{{finances.profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+                <hr>
+                <div><p class="details_list">Duración<span>{{project_duration}} años</span></p></div>
+                <hr>
+                <div><p class="details_list">Precio<span>{{#lambdas.formatMoney}}{{finances.purchase.total_price}}{{/lambdas.formatMoney}} €</span></p></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div>
+          <h3 class="section">Propiedad</h3>
+          <hr class="section_separator">
+          <p class="house_description">{{house.description}}</p>
+
+          <div class="details_house">
+            <div class="house_details">
+              <div><p class="details_list">Tipo<span>{{house.type}}</span></p></div>
+              <hr>
+              <div><p class="details_list">Estado<span>{{house.status}}</span></p></div>
+              <hr>
+              <div><p class="details_list">Tama&nacute;o<span>{{#lambdas.formatMoney}}{{house.size}}{{/lambdas.formatMoney}} m<sup>2</sup></span></p></div>
+              <hr>
+              <div><p class="details_list">Precio / metro<span>{{#lambdas.formatMoney}}{{house.price_per_meter}}{{/lambdas.formatMoney}} €/m<sup>2</sup></span></p></div>
+              <hr>
+              <div><p class="details_list">Habitaciones<span>{{house.rooms}}</span></p></div>
+              <hr>
+              <div><p class="details_list">WC<span>{{house.wc}}</span></p></div>
+            </div>
+          </div>
+          <div class="house_photos">
+            <div style="margin: 0 auto; width: 75%;">
+              <div id="cc-slider" class="slider">
+                <div class="slider_view">
+                {{^public}}
+                  {{#house.photos}}
+                  <p><img src="{{file}}"></p>
+                  {{/house.photos}}
+                {{/public}}
+                {{#public}}
+                  {{#house.photos}}
+                  <p><img src="/static/{{projectId}}/{{version}}/{{file}}"></p>
+                  {{/house.photos}}
+                {{/public}}
+                </div>
+                <span class="prev">«</span>
+                <span class="next">»</span>
+              </div>
+           </div>
+          </div>
+          <script>var slider = new Slider(document.getElementById('cc-slider'));</script>
+
+          <div class="clear"></div>
+
+          <div id="map" class="map"></div>
+        </div>
+
+        <div>
+          <h3 class="section">Finanzas</h3>
+          <hr class="section_separator">
+          <p>{{finances.description}}</p>
+          <div class="details_finances">
+            <p>Datos de compra</p>
+            <div class="finances_details">
+              <hr class="secondary_separator">
+              <div><p class="details_list">Precio<span>{{#lambdas.formatMoney}}{{finances.purchase.price}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Reformas<span>{{#lambdas.formatMoney}}{{finances.purchase.refurbishment}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Impuestos<span>{{#lambdas.formatMoney}}{{finances.purchase.taxes}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Imprevistos<span>{{#lambdas.formatMoney}}{{finances.purchase.unforeseen}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Precio total<span>{{#lambdas.formatMoney}}{{finances.purchase.total_price}}{{/lambdas.formatMoney}} €</span></p></div>
+            </div>
+
+             {{#finances.sell_enabled}}
+            <p>Datos de venta</p>
+            <div class="finances_details">
+              <hr class="secondary_separator">
+              <div><p class="details_list">Precio de venta<span>{{#lambdas.formatMoney}}{{finances.sell.price}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad bruta<span>{{#lambdas.formatPercent}}{{finances.sell.profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Comisión de venta<span>{{#lambdas.formatPercent}}{{finances.sell.fee}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Impuesto de plusvalía<span>{{#lambdas.formatPercent}}{{finances.sell.value_added_tax}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad neta<span>{{#lambdas.formatPercent}}{{finances.sell.net_profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Impuesto de sociedades<span>{{#lambdas.formatPercent}}{{finances.sell.corporate_tax}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Beneficio neto<span>{{#lambdas.formatMoney}}{{finances.sell.corporate_profit}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Comisión de gestión<span>{{#lambdas.formatPercent}}{{finances.sell.management_fee}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad del inversor<span>{{#lambdas.formatPercent}}{{finances.sell.investor_profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+            </div>
+            {{/finances.sell_enabled}}
+
+            {{#finances.rent_enabled}}
+            <p>Datos de alquiler</p>
+            <div class="finances_details">
+              <hr class="secondary_separator">
+              <div><p class="details_list">Alquiler bruto<span>{{#lambdas.formatMoney}}{{finances.rent.payment}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad bruta<span>{{#lambdas.formatPercent}}{{finances.rent.profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Seguro de alquiler<span>{{#lambdas.formatMoney}}{{finances.rent.insurance}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Seguro del hogar<span>{{#lambdas.formatMoney}}{{finances.rent.home_insurance}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">IBI<span>{{#lambdas.formatMoney}}{{finances.rent.ibi}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Comunidad de vecinos<span>{{#lambdas.formatMoney}}{{finances.rent.community_expenses}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Imprevistos<span>{{#lambdas.formatMoney}}{{finances.rent.unforeseen}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Alquiler neto<span>{{#lambdas.formatMoney}}{{finances.rent.earnings}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad neta<span>{{#lambdas.formatPercent}}{{finances.rent.net_profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+              <hr>
+              <div><p class="details_list">Amortización<span>{{#lambdas.formatMoney}}{{finances.rent.amortization}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Impuesto de sociedades<span>{{#lambdas.formatMoney}}{{finances.rent.corporate_tax}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Beneficio neto<span>{{#lambdas.formatMoney}}{{finances.rent.corporate_profit}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Comisión<span>{{#lambdas.formatMoney}}{{finances.rent.platform_fee}}{{/lambdas.formatMoney}} €</span></p></div>
+              <hr>
+              <div><p class="details_list">Rentabilidad del inversor<span>{{#lambdas.formatPercent}}{{finances.rent.investor_profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+            </div>
+            {{/finances.rent_enabled}}
+
+            <p>Total</p>
+            <div class="finances_details">
+              <hr class="secondary_separator">
+              <div><p class="details_list">Rentabilidad<span>{{#lambdas.formatPercent}}{{finances.profitability}}{{/lambdas.formatPercent}} %</span></p></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="section">Documentos</h3>
+          <hr class="section_separator">
+          <div style="padding-bottom: 1px">
+            {{^public}}
+            {{#documents}}
+            <div class="file {{position}}">
+              <a href="{{filename}}">
+                <img src="/images/file-icon.svg">
+                <p>{{text}}</p>
+                <p class="filesize">{{filesize}}</p>
+                <p class="clear"></p>
+              </a>
+            </div>
+            {{/documents}}
+            {{/public}}
+            {{#public}}
+            {{#documents}}
+            <div class="file {{position}}">
+              <a href="{{projectId}}/{{version}}/{{filename}}">
+                <img src="/images/file-icon.svg">
+                <p>{{text}}</p>
+                <p class="filesize">{{filesize}}</p>
+                <p class="clear"></p>
+              </a>
+            </div>
+            {{/documents}}
+            {{/public}}
+            <div class="clear"></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="section">Comentarios</h3>
+          <hr class="section_separator">
+          <div>
+            <div>
+              <div id="add_comment_panel" style="display: none;">
+                <p class="bolder">Tu comentario</p>
+                <textarea id="comment_text" rows="4" cols="50" maxLength="1000"></textarea>
+                <p id="error-log" class="comment-error"></p>
+                <div class="form_double_field">
+                  <div class="left">
+                    <button id="add_comment_cancel_btn" type="button" class="button">Cancelar</button>
+                  </div>
+                  <div class="right">
+                    <button id="add_comment_publish_btn" type="button" class="button">Publicar</button>
+                  </div>
+                  <p class="clear"></p>
+                </div>
+              </div>
+              <div class="center">
+                <button id="add_comment_btn" type="button" class="button half">Añadir comentario</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div id="comments_panel"></div>
+            <div>
+              <img id='comments_previous' class='left pointer hidden' src='/images/left.png'>
+              <img id='comments_next' class='right pointer hidden' src='/images/right.png'>
+              <p id='comments_current_page' class='comment_page'></p>
+            </div>
+          </div>
+
+          <div style="padding-bottom: 1px">
+            <div class="clear"></div>
+          </div>
+        </div>
+
+      </div>
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

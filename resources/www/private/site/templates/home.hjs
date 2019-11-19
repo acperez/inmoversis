@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/users.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <script type="text/javascript" src="js/home.js" /></script>
+    <script type="text/javascript" src="js/user.js" /></script>
+    <script type="text/javascript" src="js/input_helper.js" /></script>
+    <script type="text/javascript" src="js/http_client.js" /></script>
+    <script type="text/javascript" src="js/libphonenumber.min.js" /></script>
+    <script type="text/javascript" src="js/countries.js" /></script>
+    <title>InmoVersis</title>
+  </head>
+
+  <body onload="init()">
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="index">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="about">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div id="content-full">
+
+          <div id="tabs">
+            <ul>
+              <li><a id="tab-status" class="selected">Estado</a></li>
+              <li><a id="tab-data" class="unselected">Datos personales</a></li>
+              <li><a id="tab-documents" class="unselected">Documentación</a></li>
+              <li><a id="tab-wallet" class="unselected">Cartera</a></li>
+              <li><a id="tab-investments" class="unselected">Inversiones</a></li>
+              <p class="clear"></p>
+            </ul>
+          </div>
+
+          <div class="tab-content">
+            <div id="tab-status-content">
+              <div class="center">
+                <p id="status-message" class="newline">&nbsp;</p>
+                <button id="status-refresh" type="button" class="button form_button newline" style="display: none">Volver a cargar</button>
+              </div>
+            </div>
+
+            <div id="tab-data-content" style="display: none">
+              <div id="user-data" class="form-height">
+                <div>
+                    <p class="field">Tipo de usuario</p
+                    ><p id="user-type" class="value" maxlength="256"
+                    ></p>
+                </div>
+
+                <p id="id-label" class="form_header"></p>
+
+                <div>
+                    <p class="field">Nombre</p
+                    ><input id="name" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="name_report"/></p>
+                </div>
+                
+                <div>
+                    <p class="field">Apellidos</p
+                    ><input id="lastname" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="lastname_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Nacionalidad</p
+                  ><div id="nationality-div" class="value"></div>
+                </div>
+
+                <div>
+                  <p class="field">NIF o NIE</p
+                  ><input id="nif" type="text" class="value" maxlength="9"
+                  ><p class="input_report value"><span id="nif_report"/></p>
+                </div>
+
+                <p id="contact-label" class="form_header"></p>
+
+                <div>
+                  <p class="field">País del teléfono</p
+                  ><div id="phone-location-div" class="value"></div>
+                </div>
+
+                <div>
+                  <p class="field">Número de teléfono</p
+                  ><input id="phone" type="text" class="value" maxlength="15" 
+                  ><p class="input_report value"><span id="phone_report"/></p>
+                </div>
+
+                <p id="address-label" class="form_header"></p>
+
+                <div>
+                  <p class="field">Dirección</p
+                  ><input id="address" type="text" class="value" maxlength="256"
+                  ><p class="input_report value"><span id="address_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Código postal</p
+                  ><input id="postal_code" type="text" class="value"
+                  ><p class="input_report value"><span id="postal_code_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Municipio</p
+                  ><input id="city" type="text" class="value" maxlength="140"
+                  ><p class="input_report value"><span id="city_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">Provincia</p
+                  ><input id="region" type="text" class="value" maxlength="140"
+                  ><p class="input_report value"><span id="region_report"/></p>
+                </div>
+
+                <div>
+                  <p class="field">País</p
+                  ><div id="country-div" class="value"></div>
+                </div>
+
+                <div id="company-data">
+                  <p class="form_header">Datos de la empresa</p>
+
+                  <div>
+                      <p class="field">Razón social</p
+                      ><input id="company_name" type="text" class="value" maxlength="256"
+                      ><p class="input_report value"><span id="company_name_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">CIF</p
+                    ><input id="cif" type="text" class="value" maxlength="9"
+                    ><p class="input_report value"><span id="cif_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Dirección</p
+                    ><input id="company_address" type="text" class="value" maxlength="256"
+                    ><p class="input_report value"><span id="company_address_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Código postal</p
+                    ><input id="company_postal_code" type="text" class="value"
+                    ><p class="input_report value"><span id="company_postal_code_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Municipio</p
+                    ><input id="company_city" type="text" class="value" maxlength="140"
+                    ><p class="input_report value"><span id="company_city_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">Provincia</p
+                    ><input id="company_region" type="text" class="value" maxlength="140"
+                    ><p class="input_report value"><span id="company_region_report"/></p>
+                  </div>
+
+                  <div>
+                    <p class="field">País</p
+                    ><div id="company-country-div" class="value"></div>
+                  </div>
+                </div>
+
+                <p id="update-user-error" class="error"></p>
+
+                <div id="user-controls" class="toolbar-margin">
+                  <button id="user-password-update-btn" type="button" class="button form_button left">Cambiar contraseña</button>
+                  <button id="user-data-update-btn" type="button" class="button form_button right">Actualizar datos</button>
+                  <p class="clear"></p>
+                </div>
+              </div>
+              
+              <div id="edit-user-password-form">
+                <p class="form_center toolbar-margin">Introduce la contraseña nueva</p>
+
+                <input id="user-pass" name="user-pass" type="password" placeholder="Contrase&ntilde;a" class="input form_center">
+                <p class="input_report"><span id="user-pass_report"/></p>
+                <p class="clear"/>
+
+                <input id="user-pass-check" name="user-pass-check" type="password" placeholder="Repite la contrase&ntilde;a" class="input form_center">
+                <p class="input_report"><span id="user-pass-check_report"/></p>
+                <p class="clear"/>
+
+                <p id="update-pass-error" class="error"></p>
+
+                <div class="half form_center toolbar-margin">
+                  <button id="user-pass-form-cancel" type="button" class="button form_button">Cancelar</button>
+                  <button id="user-pass-form-send" type="button" class="button form_button right">Enviar</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab-documents-content" style="display: none">
+              <div>
+                <ul class="list_parent">
+                  <li id="nif_doc" class="list">
+                    <p id="nif_label" class="list_header"></p>
+                    <button id="nif_button" type="button" class="button input_button">Seleccionar archivo</button>
+                    <p id="nif_path" class="file_path"></p>
+                    <p id="nif_error" class="file_error"></p>
+                    <input id="nif_upload" type="file" style="display: none">
+                    <p class="clear"></p>
+                  </li>
+
+                  <li id="pp_doc" class="list">
+                    <p id="pp_label" class="list_header"></p>
+                    <button id="pp_button" type="button" class="button input_button">Seleccionar archivo</button>
+                    <p id="pp_path" class="file_path"></p>
+                    <p id="pp_error" class="file_error"></p>
+                    <input id="pp_upload" type="file" style="display: none">
+                    <p class="clear"></p>
+                  </li>
+
+                  <li id="cy_doc1" class="list">
+                    <p class="list_header">Escritura de constitución de la empresa</p>
+                    <button id="cy_doc1_button" type="button" class="button input_button">Seleccionar archivo</button>
+                    <p id="cy_doc1_path" class="file_path"></p>
+                    <p id="cy_doc1_error" class="file_error"></p>
+                    <input id="cy_doc1_upload" type="file" style="display: none">
+                    <p class="clear"></p>
+                  </li>
+
+                  <li id="cy_doc2" class="list">
+                    <p class="list_header">Documento de actividad de la empresa (certificado del Registro Mercantil, certificado tributario o documento de pago de impuestos del IVA, con una antiguedad mázima de 3 meses)</p>
+                    <button id="cy_doc2_button" type="button" class="button input_button">Seleccionar archivo</button>
+                    <p id="cy_doc2_path" class="file_path"></p>
+                    <p id="cy_doc2_error" class="file_error"></p>
+                    <input id="cy_doc2_upload" type="file" style="display: none">
+                    <p class="clear"></p>
+                  </li>
+
+                  <li id="iban_doc" class="list">
+                    <p class="list_header">Justificante de cuenta bancária</p>
+                    <button id="iban_button" type="button" class="button input_button">Seleccionar archivo</button>
+                    <p id="iban_path" class="file_path"></p>
+                    <p id="iban_error" class="file_error"></p>
+                    <input id="iban_upload" type="file" style="display: none">
+                    <p class="clear"></p>
+                  </li>
+                </ul>
+                <button id="send-docs-btn" type="button" class="button form_button right">Enviar</button>
+              </div>
+            </div>
+
+            <div id="tab-wallet-content" style="display: none">
+              <div>tu monedero</div>
+            </div>
+
+
+            <div id="tab-investments-content" style="display: none">
+              <div>tus inversiones</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

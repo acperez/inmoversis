@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>InmoVersis</title>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div id="logo-container">
+          <img id="logo" src="images/logo.png"/>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="index">Inicio</a></li>
+            <li><a href="projects">Proyectos</a></li>
+            <li><a href="about">Acerca</a></li>
+          </ul>
+
+          {{> menu }}
+
+        </div>
+      </div>
+
+      <div id="contentwrap">
+        <div id="welcome_wrap">
+          <p align="center" class="welcome_p">Bienvenido a InmoVersis, te has registrado correctamente.</p>
+          <p align="center" class="welcome_p">Para poder realizar inversiones debes rellenar los datos que faltan en tu zona personal.</p>
+          <p align="center" class="welcome_p">Puedes consultar los proyectos que estan en curso en la secci&oacute;n de 'Proyectos'.</p>
+        </div>
+      </div>
+      <div id="footer">
+        <p>InmoVersis &copy; 2015 | Design by <a href="http://www.webdesign-berlin.name/">Webdesign Berlin</a></p>
+      </div>
+    </div>
+  </body>
+</html>

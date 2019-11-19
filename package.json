@@ -1,0 +1,24 @@
+{
+  "name": "inmoversis-platform",
+  "version": "1.0.0",
+  "description": "Inmoversis platform",
+  "author": "Albert Crespell Perez",
+  "repository": {
+    "type": "git",
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "bugs": {
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "keywords": [
+    "crowfunding",
+    "real-estate",
+    "invest"
+  ],
+  "dependencies": {
+  },
+  "scripts": {
+    "install": "./bin/deploy.sh && (cd admin && npm install) && (cd site && npm install) && (cd payment && npm install)"
+  },
+  "license" : "AGPL-3.0"
+}

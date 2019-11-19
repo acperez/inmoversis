@@ -1,0 +1,52 @@
+.form_progress {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.form_progress a {
+  border-radius: 50%;
+  border: 1px solid #666;
+  width: 40px;
+  height: 40px;
+  margin: 6px 70px;
+}
+
+.form_progress span {
+  border-radius: 50%;
+  background-color: #1990EF;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  left: 3px;
+  position: relative;
+  top: 3px;
+  color: white;
+}
+
+.form_progress_select span {
+  background-image: url(/images/menuover.png);
+}
+
+.investor-selector {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.inv-selected {
+  border: solid 3px #2f5bb7;
+  border-radius: 50%;
+}
+
+.unselected {
+  cursor: pointer;
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+.unselected:hover {
+  filter: none; /* IE6-9 */
+  filter: grayscale(0); /* Microsoft Edge and Firefox 35+ */
+  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+}

@@ -1,0 +1,62 @@
+#server_tokens off;
+#add_header X-Frame-Options DENY;
+#add_header X-Content-Type-Options nosniff;
+#add_header X-XSS-Protection "1; mode=block";
+#add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'self; img-src 'self'; style-src 'self' 'unsafe-inline' 'self'; font-src 'self'; frame-src 'self'; object-src 'none'";
+
+server {
+        listen   80;
+        listen   [::]:80;
+
+        server_name 192.168.1.169;
+
+        return 301 https://$server_name$request_uri;
+}
+server {
+        listen 443 default_server ssl spdy;
+        server_name 192.168.1.169;
+
+
+        ssl on;
+        ssl_certificate /etc/nginx/ssl/server.crt;
+        ssl_certificate_key /etc/nginx/ssl/server.key; 
+        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-RSA-DES-CBC3-SHA:ECDHE-ECDSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+
+        location ~ ^/(images/|js/|css/|media/|static/|robots.txt|humans.txt|favicon.ico) {
+          root /var/www;
+          access_log off;
+          expires max;
+        }
+
+        location /admin {
+          client_max_body_size 40M;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header Host $host;
+          proxy_pass http://localhost:7777;
+          proxy_redirect off;
+        }
+
+        location / {
+          client_max_body_size 4M;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header Host $host;
+          proxy_pass http://localhost:8888;
+          proxy_redirect off;
+        }
+
+        error_page 404 /404.html;
+        location  /404.html {
+                internal;
+        }
+
+        error_page 502 /502.html;
+        location = /502.html {
+                internal;
+        }
+}

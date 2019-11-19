@@ -1,0 +1,296 @@
+html {
+  overflow-y: scroll;
+}
+
+body { 
+  font-family: Arial, sans-serif;  
+  line-height: 1.4;
+  font-size: 16px;
+  background: #40474f;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+#wrap { 
+  width: 1000px;
+  margin: 20px auto;
+}
+
+#header {
+  position:fixed;
+  top: 0;
+  width: 1000px;
+  margin: 0 auto;
+  z-index: 9999999;
+  padding-top: 20px;
+  background: #40474f;
+}
+
+#logo-container {
+  background: #40474f url(/images/header.jpg) no-repeat;
+  height: 130px;
+  line-height: 150px;
+}
+
+#logo {
+  padding-left: 45px;
+  padding-top: 40px;
+}
+
+#menu {
+  background: #40474f url(/images/menu.jpg) no-repeat;
+  height: 40px;
+  line-height: 40px;
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 40px;
+}
+
+#menu ul li {
+  display: block;
+  float: left;
+}
+
+#menu ul li a {
+  display: block;
+  padding: 0 10px 0 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#menu ul li a:hover {
+  color: #fff;
+  background: url(/images/menu_over.png) repeat-x;
+}
+
+#menu ul li a div {
+  height: 40px;
+}
+
+#menu .selected {
+  color: #fff;
+  background: url(/images/menu_selected.png) repeat-x;
+  pointer-events: none;
+}
+
+.menu_right {
+  float: right;
+  padding-right: 40px;
+}
+
+#menu_name {
+  margin: 0;
+  padding-right: 20px;
+  color: #292A2F;
+  font-weight: 600; 
+}
+
+.refresh {
+  margin-top: 5px;
+}
+
+#contentwrap {
+  background: #40474f url(/images/content.jpg) repeat-y;
+  padding: 200px 30px 0 30px;
+}
+
+#footer { 
+  background: #40474f url(/images/footer.jpg);
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+}
+
+#footer p {
+  padding: 0; margin: 0;
+}
+
+#footer a {
+  color: #fff;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+}
+
+#content-full {
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.admin_label_single {
+  width: 50%;
+  font-weight: bolder;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.admin_input {
+  width: 50%;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 3px 5px;
+  resize: none;
+}
+
+h2 {
+  background: url(/images/contenth-full.jpg) no-repeat;
+  margin: 0 0 20px 0;
+  color: #F9F7ED;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+}
+
+.button {
+  background-color: #178fee;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
+  color: #ffffff;
+  border: 1px solid #2f5bb7;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #357ae8;
+  background-image: -webkit-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -moz-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -ms-linear-gradient(top,#2e6898,#0e4470);
+  background-image: -o-linear-gradient(top,#2e6898,#0e4470);
+  background-image: linear-gradient(top,#2e6898,#0e4470);
+}
+
+.form_panel {
+  width: 400px;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  left: 100px;
+}
+
+.form_image {
+  width: 50%;
+  margin-bottom: 14px;
+}
+
+#login-image {
+  border-radius: 50%;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.input_report {
+  margin: 0;
+  padding-top: 5px;
+}
+
+.input_report span{
+  color: #ff0000;
+  font-size: 13px;
+  padding-left: 8px;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 3px #0c5593;
+}
+
+.login_input {
+  float: left;
+  margin-bottom: 4px;
+}
+
+.text_error {
+  color: red;
+}
+
+.popup_background {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999999;
+  text-align: center;
+}
+
+.popup_container {
+  display: inline-block;
+  width: 400px;
+  background: white;
+  margin: 20% auto 0;
+  padding: 40px;
+  border: 6px solid #2e6898;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.popup_title {
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.popup_image {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.popup_input {
+  width: 100%;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  margin: 4px 0;
+  padding: 3px 5px;
+  font-size: 16px;
+}
+
+.popup_error {
+  margin: 10px 0 0;
+  color: red;
+}
+
+.popup_send {
+  margin: 10px 0 0;
+  }
+
+.popup_input_error {
+  box-shadow: 0px 0px 10px red;
+}

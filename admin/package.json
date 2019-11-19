@@ -1,0 +1,48 @@
+{
+  "name": "inmoVersis_admin",
+  "version": "0.1.0",
+  "description": "Administration console for InmoVersis.",
+  "main": "admin.js",
+  "author": "Albert Crespell Perez",
+  "repository": {
+    "type": "git",
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "bugs": {
+    "url": "https://acperez@bitbucket.org/acperez/inmoversis"
+  },
+  "keywords": [
+    "crowfunding",
+    "real-estate",
+    "invest"
+  ],
+  "scripts": {
+    "start": "node admin.js"
+  },
+  "dependencies": {
+    "express": "4.13.0",
+    "express-session": "1.13.0",
+    "cookie-parser": "1.4.2",
+    "log4js": "0.6.36",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
+    "mongodb": "2.1.19",
+    "mongoose": "4.4.19",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.15.1",
+    "connect-redis": "3.0.2",
+    "redis": "2.5.3",
+    "hogan-express": "0.5.2",
+    "multer" : "1.1.0",
+    "jsonschema": "1.1.0",
+    "gm": "1.22.0",
+    "fs-extra": "0.30.0",
+    "node-uuid": "1.4.7",
+    "intl": "1.2.3",
+    "archiver": "0.21.0",
+    "sanitize-html": "1.11.4",
+    "request": "2.72.0",
+    "common": "file:../common"
+  },
+  "license" : "AGPL-3.0"
+}
